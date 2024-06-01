@@ -16,7 +16,6 @@ const controladorCanes = {
            
            const nuevoCan = new plantillasCanes(solicitud.body);
            const canCreado = await nuevoCan.save();
-           console.log(canCreado);
             if (canCreado._id) {
             respuesta.json ({
                resultado: "bien",
@@ -35,11 +34,12 @@ const controladorCanes = {
 leerCan: async (solicitud, respuesta) => {
     try {
         const canEncontrado = await plantillasCanes.findById(solicitud.params.id)
+        console.log(canEncontrado);
         if (canEncontrado._id)
         respuesta.json ({
             resultado: "bien",
             mensaje: "can leído",
-            datos: leerCan
+            datos: canEncontrado
          });
     } catch (error) {
         respuesta.json ({
